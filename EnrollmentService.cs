@@ -12,8 +12,9 @@ public class EnrollmentService
 
         // Guard clause 3 — course must not be full
         if (course.EnrolledCount >= course.Capacity)
-            throw new InvalidOperationException("Course is full.");
-
+        {
+            throw new CapacityReachedException(course.Code);
+        }
         // Switch expression for GPA standing
         string standing = student.GPA switch
         {
